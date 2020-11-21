@@ -65,9 +65,11 @@ export default function Content(){
             </div>
             <hr />
             <div className="my-2">
-                <textarea className="w-full focus:outline-none" style={{height:"85vh"}} value={notes} onChange={e => setNotes(e.target.value)} placeholder="Catatan .." />
+                <textarea className="w-full focus:outline-none " style={{height:'70vh'}}  value={notes} onChange={e => setNotes(e.target.value)} placeholder="Catatan .." />
             </div>
-            <button className="w-full p-3 bg-green-600 rounded-md focus:outline-none" onClick={() => update()} >Update</button>
+            <div className="inset-x-0 bottom-0 absolute p-2">
+                <button className="w-full p-3 bg-green-600 rounded-md focus:outline-none text-white " onClick={() => update()} >Update</button>
+            </div>
         </div>)
     }
   

@@ -32,11 +32,14 @@ export default function MyApp({ Component, pageProps }) {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" />
       </Head>
-      <body style={{margin:0}}>
         <StateProvider>
           <Component {...pageProps} />
         </StateProvider>
-      </body>
+        <style jsx>{`
+          body {
+            margin: 0;
+          }
+        `}</style>
     </>
   )
 }
