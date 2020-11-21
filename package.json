@@ -1,0 +1,22 @@
+{
+  "name": "progressive-web-app",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^3.0.0",
+    "autoprefixer": "^10.0.2",
+    "autosize": "^4.0.2",
+    "dexie": "^3.0.3",
+    "next": "latest",
+    "next-pwa": "^3.1.0",
+    "postcss-import": "^13.0.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "tailwindcss": "^2.0.1"
+  },
+  "license": "MIT"
+}
