@@ -10,9 +10,11 @@ export default function Content(){
     const [notes, setNotes] = useState("")
     const [modal, setModal] = useState(false)
     const inputEl = useRef(null)
+    const inputEl2 = useRef(null)
 
     useEffect(()=>{
         autosize(inputEl.current)
+        autosize(inputEl2.current)
         if (state.preview !== null){
             setTitle(state.preview.title)
             setNotes(state.preview.notes)
@@ -61,7 +63,7 @@ export default function Content(){
     const renderMobile = () => {
         return (<div >
             <div className="flex">
-                <textarea ref={inputEl} rows={1} className="text-xl my-2 focus:outline-none w-11/12" value={title} onChange={e => setTitle(e.target.value)} placeholder="Judul .." />
+                <textarea ref={inputEl2} rows={1} className="text-xl my-2 focus:outline-none w-11/12" value={title} onChange={e => setTitle(e.target.value)} placeholder="Judul .." />
             </div>
             <hr />
             <div className="my-2">
