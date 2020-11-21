@@ -8,6 +8,6 @@
         margin: 0;
     },
     .-bottom-full {
-        bottom: -150%;
+        bottom: -150% !important;
     }
 }
