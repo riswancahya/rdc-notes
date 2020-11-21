@@ -1,16 +1,22 @@
 import React, {useContext, useEffect, useState, useRef} from 'react'
 import { store } from '../helper/context'
 import db from '../db.config'
-import autosize from "autosize";
+import autosize, { update } from "autosize";
 import Modal from '../component/modal'
 
 export default function Content(){
     const { state, dispatch } = useContext(store)
+    const [title, setTitle] = useState("")
+    const [notes, setNotes] = useState("")
     const [modal, setModal] = useState(false)
     const inputEl = useRef(null)
 
     useEffect(()=>{
         autosize(inputEl.current)
+        if (state.preview !== null){
+            setTitle(state.preview.title)
+            setNotes(state.preview.notes)
+        }
     },[state.preview])
 
 
@@ -28,6 +34,13 @@ export default function Content(){
         setModal(false)
     }
 
+    const update = () => {
+        await db.table('notes').update(state.preview.id, { title: title })
+        await db.table('notes').update(state.preview.id, { notes: notes })
+        dispatch({type: 'update'})
+        dispatch({type:"preview", payload:null})
+    }
+
     const renderIsi = () => {
         return (<div >
             <div className="flex">
@@ -42,6 +55,19 @@ export default function Content(){
             <div className="my-2">
                 <textarea className="w-full focus:outline-none" style={{height:"85vh"}} value={state.preview.notes} onChange={e => change('notes', e.target.value)} placeholder="Catatan .." />
             </div>
+        </div>)
+    }
+
+    const renderMobile = () => {
+        return (<div >
+            <div className="flex">
+                <textarea ref={inputEl} rows={1} className="text-xl my-2 focus:outline-none w-11/12" value={title} onChange={e => setTitle(e.target.value)} placeholder="Judul .." />
+            </div>
+            <hr />
+            <div className="my-2">
+                <textarea className="w-full focus:outline-none" style={{height:"85vh"}} value={notes} onChange={e => setNotes(e.target.value)} placeholder="Catatan .." />
+            </div>
+            <button className="w-full p-3 bg-green-600 rounded-md focus:outline-none" onClick={() => update()} >Update</button>
         </div>)
     }
   
@@ -65,7 +91,7 @@ export default function Content(){
                     </button>
                 </div>
                 <div className="p-4">
-                    {state.preview !== null && renderIsi() }
+                    {state.preview !== null && renderMobile() }
                 </div>
             </div>
         </div>
