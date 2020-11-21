@@ -34,7 +34,7 @@ export default function Content(){
         setModal(false)
     }
 
-    const update = () => {
+    const update = async () => {
         await db.table('notes').update(state.preview.id, { title: title })
         await db.table('notes').update(state.preview.id, { notes: notes })
         dispatch({type: 'update'})
