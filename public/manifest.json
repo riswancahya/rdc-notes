@@ -3,8 +3,7 @@
   "short_name": "Notes",
   "theme_color": "#F9FAFB",
   "background_color": "#F9FAFB",
-  "display": "fullscreen",
-  "orientation": "portrait",
+  "display": "standalone",
   "scope": "/",
   "start_url": "/",
   "icons": [
