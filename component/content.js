@@ -3,6 +3,7 @@ import { store } from '../helper/context'
 import db from '../db.config'
 import autosize, { update } from "autosize";
 import Modal from '../component/modal'
+import Record from './record'
 
 export default function Content(){
     const { state, dispatch } = useContext(store)
@@ -55,6 +56,7 @@ export default function Content(){
             </div>
             <hr />
             <div className="my-2">
+                <Record />
                 <textarea className="w-full focus:outline-none" style={{height:"85vh"}} value={state.preview.notes} onChange={e => change('notes', e.target.value)} placeholder="Catatan .." />
             </div>
         </div>)

@@ -50,7 +50,9 @@ export default function Home() {
     
 
     },[])
-    
+    const toggle = (value) => {
+        return
+    }
     return (<React.Fragment>
         <div className="grid grid-cols-1 lg:grid-cols-4 bg-gray-50 font-sans">
             <Sidebar />
@@ -60,7 +62,7 @@ export default function Home() {
             <Modal 
                 title="Install PWA" 
                 description="Akses lebih mudah melalui layar beranda anda tanpa koneksi internet" 
-                toggle={true} 
+                toggle={toggle} 
                 confirm="Install" 
                 install={true}
             />
